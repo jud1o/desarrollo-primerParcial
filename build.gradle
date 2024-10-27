@@ -21,8 +21,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-tasks.named('bootJar') {
-    mainClassName = 'com.desarrollo.parcial.Application' // Cambia a tu clase principal
+bootJar {
+    mainClass = 'com.desarrollo.parcial.Application' // Asegurate de que este sea el nombre correcto de la clase principal
 }
 
 
