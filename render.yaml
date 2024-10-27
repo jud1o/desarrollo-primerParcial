@@ -1,0 +1,10 @@
+version: 1
+services:
+  - type: web
+    name: mutant-api
+    env: java
+    buildCommand: ./gradlew build
+    startCommand: java -jar build/libs/*.jar
+    autoDeploy: true
+    github:
+      autoDeploy: true
