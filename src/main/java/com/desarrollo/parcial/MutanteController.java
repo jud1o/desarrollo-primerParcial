@@ -46,6 +46,13 @@ public class MutanteController {
         return mutante.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    //Método para obtener estadísticas
+    @GetMapping("/stats")
+    public ResponseEntity<StatsResponse> obtenerEstadisticas() {
+        StatsResponse stats = mutanteService.obtenerEstadisticas();
+        return ResponseEntity.ok(stats);
+    }
 }
 
 

@@ -217,4 +217,13 @@ public class MutanteService {
         return mutanteRepository.findById(id);
     }
 
+    public StatsResponse obtenerEstadisticas() {
+        List<Mutante> mutantes = mutanteRepository.findAll();
+        long countMutantDna = mutantes.stream().filter(Mutante::isEsMutante).count();
+        long countHumanDna = mutantes.size() - countMutantDna;
+
+        double ratio = (countHumanDna == 0) ? 0 : (double) countMutantDna / countHumanDna;
+
+        return new StatsResponse(countMutantDna, countHumanDna, ratio);
+    }
 }
