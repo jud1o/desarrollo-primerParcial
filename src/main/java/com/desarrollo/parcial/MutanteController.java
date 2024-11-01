@@ -19,6 +19,10 @@ public class MutanteController {
     @PostMapping("/")
     public ResponseEntity<String> verificarMutante(@RequestBody ADNRequest request) {
         boolean esMutante = mutanteService.isMutant(request.getAdn());
+
+        // Guarda el ADN en la base de datos
+        mutanteService.guardarADN(request.getAdn());
+
         if (esMutante) {
             return ResponseEntity.ok("Es un mutante");
         } else {
@@ -26,4 +30,3 @@ public class MutanteController {
         }
     }
 }
-
