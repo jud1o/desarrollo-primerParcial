@@ -196,13 +196,15 @@ public class MutanteService {
     }
 
     public void guardarADN(String[] adn) {
-        if (isMutant(adn)) {
-            Mutante mutante = new Mutante(adn, true);
-            mutanteRepository.save(mutante);
-        } else {
-
-        }
+    String adnCadena = String.join("", adn); //Hace que el array sea una sola cadena
+    
+    //Se fija si el ADN ya existe
+    if (mutanteRepository.findByAdn(adnCadena).isEmpty()) {
+        boolean esMutante = isMutant(adn);
+        Mutante mutante = new Mutante(adnCadena, esMutante);
+        mutanteRepository.save(mutante); //Lo guarda solo si no existe
     }
+}
 }
 
 
