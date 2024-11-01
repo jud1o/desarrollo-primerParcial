@@ -168,20 +168,27 @@ public class MutanteService {
         if (!controlMatriz(arreglo2d, adn)) { // Si el control devuelve false
             return false;
         }
-
-        if (horizontal(arreglo2d, medidaMatriz) > 1) {
+        int totalHorizontal=0;
+        totalHorizontal = horizontal(arreglo2d, medidaMatriz);
+        if (totalHorizontal > 1) {
             return true;
         }
 
-        if (vertical(arreglo2d, medidaMatriz) > 1) {
+        int totalVertical=0;
+        totalVertical = vertical(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical)>1){
             return true;
         }
 
-        if (secuenciasDiagonalIzDe(arreglo2d, medidaMatriz) > 1) {
+        int totalDiagonalIzqDer=0;
+        totalDiagonalIzqDer = secuenciasDiagonalIzDe(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical+totalDiagonalIzqDer)>1){
             return true;
         }
 
-        if (secuenciasDiagonalDeIz(arreglo2d, medidaMatriz) > 1) {
+        int totalSecuenceDiagDerIzq=0;
+        totalSecuenceDiagDerIzq = secuenciasDiagonalDeIz(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical+totalDiagonalIzqDer+totalSecuenceDiagDerIzq)>1){
             return true;
         }
 
