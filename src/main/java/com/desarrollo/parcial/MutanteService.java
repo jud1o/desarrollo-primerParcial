@@ -5,6 +5,9 @@ import com.desarrollo.parcial.model.Mutante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class MutanteService {
 
@@ -196,15 +199,22 @@ public class MutanteService {
     }
 
     public void guardarADN(String[] adn) {
-    String adnCadena = String.join("", adn); //Hace que el array sea una sola cadena
-    
-    //Se fija si el ADN ya existe
-    if (mutanteRepository.findByAdn(adnCadena).isEmpty()) {
-        boolean esMutante = isMutant(adn);
-        Mutante mutante = new Mutante(adnCadena, esMutante);
-        mutanteRepository.save(mutante); //Lo guarda solo si no existe
+        String adnCadena = String.join("", adn); //Hace que el array sea una sola cadena
+
+        //Se fija si el ADN ya existe
+        if (mutanteRepository.findByAdn(adnCadena).isEmpty()) {
+            boolean esMutante = isMutant(adn);
+            Mutante mutante = new Mutante(adnCadena, esMutante);
+            mutanteRepository.save(mutante); //Lo guarda solo si no existe
+        }
     }
-}
-}
 
+    public List<Mutante> obtenerTodosLosMutantes() {
+        return mutanteRepository.findAll();
+    }
 
+    public Optional<Mutante> obtenerMutantePorId(Long id) {
+        return mutanteRepository.findById(id);
+    }
+
+}

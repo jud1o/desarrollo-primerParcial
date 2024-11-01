@@ -4,6 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.desarrollo.parcial.model.Mutante;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/mutante")
@@ -29,4 +33,19 @@ public class MutanteController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("No es un mutante");
         }
     }
+
+    @GetMapping("/")
+    public ResponseEntity<List<Mutante>> obtenerMutantes() {
+        List<Mutante> mutantes = mutanteService.obtenerTodosLosMutantes();
+        return ResponseEntity.ok(mutantes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Mutante> obtenerMutantePorId(@PathVariable Long id) {
+        Optional<Mutante> mutante = mutanteService.obtenerMutantePorId(id);
+        return mutante.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
+
+
