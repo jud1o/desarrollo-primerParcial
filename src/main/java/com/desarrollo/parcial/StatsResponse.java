@@ -11,11 +11,11 @@ class StatsResponse {
         this.ratio = ratio;
     }
 
-    public long getCount_mutant_dna() {
+    public long getCountMutantDna() {
         return count_mutant_dna;
     }
 
-    public long getCount_human_dna() {
+    public long getCountHumanDna() {
         return count_human_dna;
     }
 
