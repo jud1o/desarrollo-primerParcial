@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b5d5e79-4ae5-4d89-8f7b-3d9178c3fe15" name="Changes" comment="Cambios para el correcto funcionamiento con Postman">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/StatsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/desarrollo/parcial/MutanteServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/MutanteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/MutanteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/MutanteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/MutanteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/model/Mutante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/model/Mutante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/repository/MutanteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/desarrollo/parcial/repository/MutanteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="3b5d5e79-4ae5-4d89-8f7b-3d9178c3fe15" name="Changes" comment="Cambios para el correcto funcionamiento con Postman" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
