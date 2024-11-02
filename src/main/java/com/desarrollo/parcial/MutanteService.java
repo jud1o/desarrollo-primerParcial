@@ -5,6 +5,9 @@ import com.desarrollo.parcial.model.Mutante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class MutanteService {
 
@@ -168,20 +171,27 @@ public class MutanteService {
         if (!controlMatriz(arreglo2d, adn)) { // Si el control devuelve false
             return false;
         }
-
-        if (horizontal(arreglo2d, medidaMatriz) > 1) {
+        int totalHorizontal=0;
+        totalHorizontal = horizontal(arreglo2d, medidaMatriz);
+        if (totalHorizontal > 1) {
             return true;
         }
 
-        if (vertical(arreglo2d, medidaMatriz) > 1) {
+        int totalVertical=0;
+        totalVertical = vertical(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical)>1){
             return true;
         }
 
-        if (secuenciasDiagonalIzDe(arreglo2d, medidaMatriz) > 1) {
+        int totalDiagonalIzqDer=0;
+        totalDiagonalIzqDer = secuenciasDiagonalIzDe(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical+totalDiagonalIzqDer)>1){
             return true;
         }
 
-        if (secuenciasDiagonalDeIz(arreglo2d, medidaMatriz) > 1) {
+        int totalSecuenceDiagDerIzq=0;
+        totalSecuenceDiagDerIzq = secuenciasDiagonalDeIz(arreglo2d, medidaMatriz);
+        if ((totalHorizontal+totalVertical+totalDiagonalIzqDer+totalSecuenceDiagDerIzq)>1){
             return true;
         }
 
@@ -189,13 +199,31 @@ public class MutanteService {
     }
 
     public void guardarADN(String[] adn) {
-        if (isMutant(adn)) {
-            Mutante mutante = new Mutante(adn, true);
-            mutanteRepository.save(mutante);
-        } else {
+        String adnCadena = String.join("", adn); //Hace que el array sea una sola cadena
 
+        //Se fija si el ADN ya existe
+        if (mutanteRepository.findByAdn(adnCadena).isEmpty()) {
+            boolean esMutante = isMutant(adn);
+            Mutante mutante = new Mutante(adnCadena, esMutante);
+            mutanteRepository.save(mutante); //Lo guarda solo si no existe
         }
     }
+
+    public List<Mutante> obtenerTodosLosMutantes() {
+        return mutanteRepository.findAll();
+    }
+
+    public Optional<Mutante> obtenerMutantePorId(Long id) {
+        return mutanteRepository.findById(id);
+    }
+
+    public StatsResponse obtenerEstadisticas() {
+        List<Mutante> mutantes = mutanteRepository.findAll();
+        long countMutantDna = mutantes.stream().filter(Mutante::isEsMutante).count();
+        long countHumanDna = mutantes.size() - countMutantDna;
+
+        double ratio = (countHumanDna == 0) ? 0 : (double) countMutantDna / countHumanDna;
+
+        return new StatsResponse(countMutantDna, countHumanDna, ratio);
+    }
 }
-
-

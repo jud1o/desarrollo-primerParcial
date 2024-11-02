@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ElementCollection;
-import java.util.List;
+import jakarta.persistence.Column;
 
 @Entity
 public class Mutante {
@@ -14,15 +13,16 @@ public class Mutante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    private List<String> adn; // Cambiado a List<String>
+    @Column(unique = true)
+    private String adn;
+
     private boolean esMutante;
 
     public Mutante() {
     }
 
-    public Mutante(String[] adn, boolean esMutante) {
-        this.adn = List.of(adn); // Convertido a List<String>
+    public Mutante(String adn, boolean esMutante) {
+        this.adn = adn;
         this.esMutante = esMutante;
     }
 
@@ -30,11 +30,11 @@ public class Mutante {
         return id;
     }
 
-    public List<String> getAdn() { // Cambiado a List<String>
+    public String getAdn() {
         return adn;
     }
 
-    public void setAdn(List<String> adn) { // Cambiado a List<String>
+    public void setAdn(String adn) {
         this.adn = adn;
     }
 
@@ -46,3 +46,4 @@ public class Mutante {
         this.esMutante = esMutante;
     }
 }
+
