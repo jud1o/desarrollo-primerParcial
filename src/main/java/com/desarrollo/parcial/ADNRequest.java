@@ -6,6 +6,10 @@ public class ADNRequest {
     public ADNRequest() {
     }
 
+    public ADNRequest(String[] adn) {
+        this.adn = adn;
+    }
+
     public String[] getAdn() {
         return adn;
     }
