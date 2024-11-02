@@ -13,16 +13,14 @@ public class Mutante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true) // Garantiza que el ADN sea único en la base de datos
+    @Column(unique = true)
     private String adn;
 
     private boolean esMutante;
 
-    // Constructor vacío requerido por JPA
     public Mutante() {
     }
 
-    // Constructor que acepta un String en lugar de un array
     public Mutante(String adn, boolean esMutante) {
         this.adn = adn;
         this.esMutante = esMutante;
