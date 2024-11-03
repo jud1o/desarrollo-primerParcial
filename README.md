@@ -45,5 +45,4 @@ A continuación se brindan opciones de solicitudes:
 }
 
 Los test automáticos se encuentran en la carpeta "test"
-Para observar el Code Coverage, dirigirse a la carpeta build/reports/jacoco y abrir el archivo index.html en el navegador
-Finalmente, se adjunta en el repositorio un PDF con el diagrama de secuencia referente al proyecto.
+Finalmente, el Code Coverage junto con el diagrama de secuencia referente al proyecto, se adjuntan como PDF.
